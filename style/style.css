@@ -1,0 +1,262 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+
+/* RESET */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-shadow: 0;
+}
+
+/* VARIAVÉIS */
+:root {
+  /*color*/
+  --strong-cyan: hsl(172, 67%, 45%);
+  --very-dark-cyan: hsl(183, 100%, 15%);
+  --dark-grayish-cyan: hsl(186, 14%, 43%);
+  --dark-grayish-cyan-two: hsl(184, 14%, 56%);
+  --light-cyan: hsl(185, 41%, 84%);
+  --white: hsl(0, 0%, 100%);
+  /*font*/
+  --font-primary-size: 1.5rem;
+  --font-primary-family: 'Space Mono', monospace;
+}
+
+/*LAYOUT*/
+body {
+  background-color: var(--light-cyan);
+  font-size: var(--font-primary-size);
+  font-family: var(--font-primary-family);
+  color: var(--very-dark-cyan);
+}
+
+.container {
+  margin: 0 1rem 3rem 1rem;
+  padding: 1.5rem;
+
+  background: white;
+
+  border-radius: 1rem;
+}
+
+.container p {
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 1.5rem 0 0.5rem 0;
+}
+
+.title {
+  text-align: center;
+
+  padding: 2rem 7rem;
+
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+input {
+  width: 98%;
+  height: 2.5rem;
+
+  background: var(--light-cyan);
+
+  border: none;
+  border-radius: 0.2rem;
+
+  padding-right: 0.5rem;
+
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--very-dark-cyan);
+  font-family: var(--font-primary-family);
+  text-align: end;
+}
+
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+input:focus {
+  outline: none;
+  border: 2px solid var(--strong-cyan);
+}
+
+.input-error:active,
+.input-error:focus {
+  border: 2px solid red;
+}
+
+.block-one input.value {
+  background-image: url(./../images/icon-dollar.svg);
+  background-repeat: no-repeat;
+
+  background-position: 0.5rem;
+  text-align: end;
+}
+
+.block-one input.person {
+  background-image: url(./../images/icon-person.svg);
+  background-repeat: no-repeat;
+
+  background-position: 0.5rem;
+  text-align: end;
+}
+
+.btn {
+  display: inline-block;
+  width: 47%;
+  height: 2.5rem;
+
+  margin-bottom: 0.5rem;
+  text-align: center;
+
+  background: var(--very-dark-cyan);
+
+  font-family: var(--font-primary-family);
+  font-size: var(--font-primary-size);
+  color: var(--white);
+
+  border: none;
+  border-radius: 0.2rem;
+  cursor: pointer;
+}
+
+.btn-active {
+  display: inline-block;
+  background: var(--strong-cyan);
+  color: var(--very-dark-cyan);
+  font-weight: bold;
+
+  width: 47%;
+  height: 2.5rem;
+
+  margin-bottom: 0.5rem;
+  text-align: center;
+
+  border: none;
+  border-radius: 0.2rem;
+}
+
+.divs-tip input {
+  width: 43%;
+}
+
+.block-one span#error {
+  font-size: 0.6rem;
+  color: red;
+  display: none;
+}
+
+.block-one span#errorTip {
+  font-size: 0.6rem;
+  color: red;
+  text-align: end;
+  display: none;
+  padding-left: 7.5rem;
+}
+
+.block-two {
+  background: var(--very-dark-cyan);
+  border-radius: 1rem;
+  margin-top: 1.5rem;
+  padding: 1rem;
+}
+
+.block-two p {
+  color: var(--white);
+  font-size: 0.8rem;
+}
+
+.block-two span {
+  color: var(--dark-grayish-cyan);
+  font-size: 0.7rem;
+}
+
+.total-account,
+.total-tip {
+  display: flex;
+  align-items: center;
+  color: var(--strong-cyan);
+}
+
+.value-total {
+  width: 90%;
+  text-align: end;
+  overflow: auto;
+}
+
+button {
+  width: 100%;
+  border: none;
+  background: var(--strong-cyan);
+  height: 2.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--very-dark-cyan);
+  text-transform: uppercase;
+  border-radius: 0.3rem;
+  margin-top: 1rem;
+  cursor: pointer;
+}
+
+.attribution {
+  text-align: center;
+  font-size: 0.6rem;
+  margin-bottom: 2rem;
+}
+
+.attribution a {
+  text-decoration: none;
+  color: var(--strong-cyan);
+}
+
+@media only screen and (min-width: 1200px) {
+  .title {
+    padding: 2rem 36rem;
+  }
+  .container {
+    height: 27rem;
+    margin: 0 15rem 3rem 15rem;
+    display: flex;
+    grid-gap: 2rem;
+  }
+
+  .container p {
+    padding: 2.5rem 0 0.7rem 0;
+  }
+
+  .block-one,
+  .block-two {
+    width: 49%;
+  }
+
+  .btn {
+    width: 30%;
+  }
+
+  .divs-tip input {
+    width: 27%;
+  }
+
+  button {
+    height: 3.1rem;
+    margin-top: 5.9rem;
+  }
+
+  .block-one span#errorTip {
+    padding-left: 12.5rem;
+  }
+
+  .block-one span#error {
+    padding-left: 5rem;
+  }
+
+  .text-total-tip,
+  .text-total-account {
+    width: 40%;
+  }
+
+  .value-total {
+    font-size: 3rem;
+  }
+}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style/style.css" />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <title>Gorjeta app</title>
+  </head>
+  <body>
+    <p class="title">Dividir Gorjeta</p>
+    <div class="container">
+      <div class="block-one">
+        <p>Conta <span id="errorTip">não pode ser zero</span></p>
+        <input
+          class="value"
+          id="valueTotal"
+          type="number"
+          placeholder="0"
+          required
+        />
+
+        <p>Selecione % da Gorjeta</p>
+        <div class="divs-tip">
+          <div class="btn" id="btn" value="5">5%</div>
+          <div class="btn" id="btn" value="10">10%</div>
+          <div class="btn" id="btn" value="15">15%</div>
+          <div class="btn" id="btn" value="25">25%</div>
+          <div class="btn" id="btn" value="50">50%</div>
+          <input type="number" id="custom" placeholder="Custom" />
+        </div>
+
+        <p>Número de pessoas <span id="error">não pode ser zero</span></p>
+        <input id="totalPerson" class="person" type="number" placeholder="0" />
+      </div>
+      <div class="block-two">
+        <div class="total-tip">
+          <div class="text-total-tip">
+            <p>
+              Total da Gorjeta <br />
+              <span>/ Pessoas</span>
+            </p>
+          </div>
+          <div class="value-total" id="totalTip"></div>
+        </div>
+
+        <div class="total-account">
+          <div class="text-total-account">
+            <p>
+              Total da Conta <br />
+              <span>/ Pessoas</span>
+            </p>
+          </div>
+          <div class="value-total" id="totalCont"></div>
+        </div>
+        <button id="reset">Reset</button>
+      </div>
+    </div>
+
+    <div class="attribution">
+      Coded by
+      <a href="https://www.linkedin.com/in/alison-rocha-dev/" target="_blank"
+        >Alison Rocha</a
+      >.
+    </div>
+
+    <script src="./js/index.js"></script>
+  </body>
+</html>
