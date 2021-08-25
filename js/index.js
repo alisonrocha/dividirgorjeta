@@ -12,7 +12,6 @@ let inputValueTotal = document.getElementById('valueTotal')
 
 inputValueTotal.addEventListener('input', () => {
   valueTotal = inputValueTotal.value
-  console.log(valueTotal)
   calcular(data)
 })
 
@@ -57,8 +56,7 @@ totalPersonInput.addEventListener('input', () => {
 
 //Calcular
 function calcular(dataReceived) {
-  console.log(valueTotal, porcentageTip, totalPerson)
-
+  
   let result = 0
 
   //Se o campo estiver 0, a div vai add a classe error
