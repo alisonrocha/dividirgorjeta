@@ -56,11 +56,10 @@ totalPersonInput.addEventListener('input', () => {
 
 //Calcular
 function calcular(dataReceived) {
-  
   let result = 0
 
   //Se o campo estiver 0, a div vai add a classe error
-  if (valueTotal === 0) {
+  if (valueTotal == 0) {
     inputValueTotal.classList.add('input-error')
     document.getElementById('errorTip').style.display = 'inline-block'
   } else {
@@ -68,7 +67,7 @@ function calcular(dataReceived) {
     document.getElementById('errorTip').style.display = 'none'
   }
 
-  if (totalPerson === 0) {
+  if (totalPerson == 0) {
     totalPersonInput.classList.add('input-error')
     document.getElementById('error').style.display = 'inline-block'
   } else {
