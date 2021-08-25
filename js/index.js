@@ -1,6 +1,7 @@
 const btnClick = document.querySelectorAll('.btn')
 
-let dados = {}
+let data = {}
+let { valueTotal, porcentageTip, totalPerson } = data
 
 //Setar o resultado final do cálculo
 document.getElementById('totalTip').innerHTML = '$' + 0
@@ -9,27 +10,26 @@ document.getElementById('totalCont').innerHTML = '$' + 0
 //Salvar o valor do input da conta final
 let inputValueTotal = document.getElementById('valueTotal')
 
-inputValueTotal.addEventListener('input', function (e) {
-  dados.valueTotal = inputValueTotal.value
-  e.preventDefault()
-  calcular(dados)
+inputValueTotal.addEventListener('input', () => {
+  valueTotal = inputValueTotal.value
+  console.log(valueTotal)
+  calcular(data)
 })
 
 //Salvar porcentagem da gorjeta
 for (i = 0; i < btnClick.length; i++) {
-  btnClick[i].addEventListener('click', function (e) {
+  btnClick[i].addEventListener('click', function () {
     cleanBtn()
     this.classList.add('btn-active')
-    dados.porcentageTip = this.getAttribute('value')
-    e.preventDefault()
-    calcular(dados)
+    porcentageTip = this.getAttribute('value')
+    calcular(data)
   })
 }
 
 //Limpar os buttons
 function cleanBtn() {
   for (i = 0; i < btnClick.length; i++) {
-    if (btnClick[i].classList.contains('btn-active') == true) {
+    if (btnClick[i].classList.contains('btn-active')) {
       btnClick[i].classList.remove('btn-active')
     }
   }
@@ -38,29 +38,31 @@ function cleanBtn() {
 //Se o input custom estiver com valor
 let valueCustom = document.getElementById('custom')
 
-valueCustom.addEventListener('click', function () {
+valueCustom.addEventListener('click', () => {
   cleanBtn()
 })
 
-valueCustom.addEventListener('input', function () {
-  dados.porcentageTip = valueCustom.value
-  calcular(dados)
+valueCustom.addEventListener('input', () => {
+  porcentageTip = valueCustom.value
+  calcular(data)
 })
 
 //Valor do input de quantidade de pessoas
-let totalPerson = document.getElementById('totalPerson')
+let totalPersonInput = document.getElementById('totalPerson')
 
-totalPerson.addEventListener('input', function () {
-  dados.totalPerson = totalPerson.value
-  calcular(dados)
+totalPersonInput.addEventListener('input', () => {
+  totalPerson = totalPersonInput.value
+  calcular(data)
 })
 
 //Calcular
-function calcular(dados) {
+function calcular(dataReceived) {
+  console.log(valueTotal, porcentageTip, totalPerson)
+
   let result = 0
 
   //Se o campo estiver 0, a div vai add a classe error
-  if (dados.valueTotal == 0) {
+  if (valueTotal === 0) {
     inputValueTotal.classList.add('input-error')
     document.getElementById('errorTip').style.display = 'inline-block'
   } else {
@@ -68,30 +70,30 @@ function calcular(dados) {
     document.getElementById('errorTip').style.display = 'none'
   }
 
-  if (dados.totalPerson == 0) {
-    totalPerson.classList.add('input-error')
+  if (totalPerson === 0) {
+    totalPersonInput.classList.add('input-error')
     document.getElementById('error').style.display = 'inline-block'
   } else {
-    totalPerson.classList.remove('input-error')
+    totalPersonInput.classList.remove('input-error')
     document.getElementById('error').style.display = 'none'
   }
 
   //Cálculo tatal
-  if (dados.valueTotal != '' && dados.totalPerson) {
-    console.log(dados.porcentageTip)
+  if (valueTotal !== '' && totalPerson) {
+    console.log(porcentageTip)
     //Calcular Porcentagem
-    if (dados.porcentageTip == undefined) {
+    if (porcentageTip === undefined) {
       document.getElementById('totalTip').innerHTML = '$' + 0
     } else {
-      result = (dados.porcentageTip / 100) * dados.valueTotal
+      result = (porcentageTip / 100) * valueTotal
 
-      result = result / dados.totalPerson
+      result = result / totalPerson
 
       document.getElementById('totalTip').innerHTML = '$' + result.toFixed(2)
     }
 
     //Divisão da Conta
-    let finishResult = dados.valueTotal / dados.totalPerson + result
+    let finishResult = valueTotal / totalPerson + result
 
     document.getElementById('totalCont').innerHTML =
       '$' + finishResult.toFixed(2)
@@ -101,6 +103,6 @@ function calcular(dados) {
 //Limpar Calculadora
 let clearCalc = document.getElementById('reset')
 
-clearCalc.addEventListener('click', function () {
+clearCalc.addEventListener('click', () => {
   window.location.reload()
 })
