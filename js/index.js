@@ -11,7 +11,7 @@ let inputValueTotal = document.getElementById('valueTotal')
 
 inputValueTotal.addEventListener('input', () => {
   data.valueTotal = inputValueTotal.value
-  calcular(data)
+  calcular()
 })
 
 //Salvar porcentagem da gorjeta
@@ -20,7 +20,7 @@ for (i = 0; i < btnClick.length; i++) {
     cleanBtn()
     event.target.classList.add('btn-active')
     data.porcentageTip = event.target.getAttribute('value')
-    calcular(data)
+    calcular()
   })
 }
 
@@ -42,7 +42,7 @@ valueCustom.addEventListener('click', () => {
 
 valueCustom.addEventListener('input', () => {
   data.porcentageTip = valueCustom.value
-  calcular(data)
+  calcular()
 })
 
 //Valor do input de quantidade de pessoas
@@ -50,11 +50,11 @@ let totalPersonInput = document.getElementById('totalPerson')
 
 totalPersonInput.addEventListener('input', () => {
   data.totalPerson = totalPersonInput.value
-  calcular(data)
+  calcular()
 })
 
 //Calcular
-function calcular(dataReceived) {
+function calcular() {
   let result = 0
 
   //Se o campo estiver 0, a div vai add a classe error
