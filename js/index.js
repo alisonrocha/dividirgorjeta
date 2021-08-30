@@ -1,7 +1,6 @@
 const btnClick = document.querySelectorAll('.btn')
 
 let data = {}
-let { valueTotal, porcentageTip, totalPerson } = data
 
 //Setar o resultado final do cálculo
 document.getElementById('totalTip').innerHTML = '$' + 0
@@ -11,16 +10,16 @@ document.getElementById('totalCont').innerHTML = '$' + 0
 let inputValueTotal = document.getElementById('valueTotal')
 
 inputValueTotal.addEventListener('input', () => {
-  valueTotal = inputValueTotal.value
+  data.valueTotal = inputValueTotal.value
   calcular(data)
 })
 
 //Salvar porcentagem da gorjeta
 for (i = 0; i < btnClick.length; i++) {
-  btnClick[i].addEventListener('click', function () {
+  btnClick[i].addEventListener('click', event => {
     cleanBtn()
-    this.classList.add('btn-active')
-    porcentageTip = this.getAttribute('value')
+    event.target.classList.add('btn-active')
+    data.porcentageTip = event.target.getAttribute('value')
     calcular(data)
   })
 }
@@ -42,7 +41,7 @@ valueCustom.addEventListener('click', () => {
 })
 
 valueCustom.addEventListener('input', () => {
-  porcentageTip = valueCustom.value
+  data.porcentageTip = valueCustom.value
   calcular(data)
 })
 
@@ -50,7 +49,7 @@ valueCustom.addEventListener('input', () => {
 let totalPersonInput = document.getElementById('totalPerson')
 
 totalPersonInput.addEventListener('input', () => {
-  totalPerson = totalPersonInput.value
+  data.totalPerson = totalPersonInput.value
   calcular(data)
 })
 
@@ -59,7 +58,7 @@ function calcular(dataReceived) {
   let result = 0
 
   //Se o campo estiver 0, a div vai add a classe error
-  if (valueTotal == 0) {
+  if (data.valueTotal == 0) {
     inputValueTotal.classList.add('input-error')
     document.getElementById('errorTip').style.display = 'inline-block'
   } else {
@@ -67,7 +66,7 @@ function calcular(dataReceived) {
     document.getElementById('errorTip').style.display = 'none'
   }
 
-  if (totalPerson == 0) {
+  if (data.totalPerson == 0) {
     totalPersonInput.classList.add('input-error')
     document.getElementById('error').style.display = 'inline-block'
   } else {
@@ -76,21 +75,20 @@ function calcular(dataReceived) {
   }
 
   //Cálculo tatal
-  if (valueTotal !== '' && totalPerson) {
-    console.log(porcentageTip)
+  if (data.valueTotal !== '' && data.totalPerson) {
     //Calcular Porcentagem
-    if (porcentageTip === undefined) {
+    if (data.porcentageTip === undefined) {
       document.getElementById('totalTip').innerHTML = '$' + 0
     } else {
-      result = (porcentageTip / 100) * valueTotal
+      result = (data.porcentageTip / 100) * data.valueTotal
 
-      result = result / totalPerson
+      result = result / data.totalPerson
 
       document.getElementById('totalTip').innerHTML = '$' + result.toFixed(2)
     }
 
     //Divisão da Conta
-    let finishResult = valueTotal / totalPerson + result
+    let finishResult = data.valueTotal / data.totalPerson + result
 
     document.getElementById('totalCont').innerHTML =
       '$' + finishResult.toFixed(2)
